@@ -16,6 +16,15 @@
   <title>アンケート課題</title>
 </head>
 <body>
+  <div class="mountain-bg"></div>
+  <header class="gl-header">
+    <div class="logo">HEADER</div>
+    <div class="list">
+      <a class="item" href="">menu1</a>
+      <a class="item" href="">menu2</a>
+      <a class="item" href="">menu3</a>
+    </div>
+  </header>
   <div class="column-wrap">
     <div class="side-container">
       <div class="side-bar">
@@ -37,41 +46,51 @@
       </div>
     </div>
     <div class="form-container">
-      <form method="post" action="">
-        <ul class="">
-          <li class="">
-            <p class="">なまえ</p>
-            <div class="">
-              <div class="">
-                <input type="text" name="last_name" value="" placeholder="Yamada">
-              </div>
-              <div class="">
-                <input type="text" name="first_name" value="" placeholder="Taro">
-              </div>
+      <form class="form" method="post" action="confirm.php">
+        <ul class="list">
+          <li class="item">
+            <p class="question">Name</p>
+            <div class="input-wrap">
+              <input class="input" type="text" name="last_name" value="" placeholder="Yamada">
+              <input class="input" type="text" name="first_name" value="" placeholder="Taro">
             </div>
           </li>
-          <li class="">
-            <p class="">好きな色</p>
-            <div class="">
-              <label><input type="radio" name="color" value="male">暖色</label>
-              <label><input type="radio" name="color" value="female">寒色</label>
+          <li class="item">
+            <p class="question">Color</p>
+            <div class="input-wrap">
+              <label class="label"><input type="radio" name="color" value="warm"><span class="text">warm color</span></label>
+              <label class="label"><input type="radio" name="color" value="cold"><span class="text">cold color</span></label>
             </div>
           </li>
-          <li class="">
-            <p class="">好きな季節</p>
-            <div class="">
-              <label><input type="radio" name="season" value="spring">春</label>
-              <label><input type="radio" name="season" value="summer">夏</label>
-              <label><input type="radio" name="season" value="autumn">秋</label>
-              <label><input type="radio" name="season" value="winter">冬</label>
+          <li class="item">
+            <p class="question">Season</p>
+            <div class="radio-wrap">
+              <label class="label"><input type="radio" name="season" value="spring">spring</label>
+              <label class="label"><input type="radio" name="season" value="summer">summer</label>
+              <label class="label"><input type="radio" name="season" value="autumn">autumn</label>
+              <label class="label"><input type="radio" name="season" value="winter">winter</label>
             </div>
           </li>
-
+          <li class="item">
+            <p class="question">Dog or Cat</p>
+            <div class="radio-wrap">
+              <label class="label"><input type="radio" name="animal" value="dog">dog</label>
+              <label class="label"><input type="radio" name="animal" value="cat">cat</label>
+            </div>
+          </li>
+          <li class="item">
+            <p class="question">Feeling now</p>
+            <div class="radio-wrap">
+              <label class="label"><input type="radio" name="feeling" value="happy">happy</label>
+              <label class="label"><input type="radio" name="feeling" value="fine">fine</label>
+              <label class="label"><input type="radio" name="feeling" value="sleepy">sleepy</label>
+              <label class="label"><input type="radio" name="feeling" value="hungry">hungry</label>
+              <label class="label"><input type="radio" name="feeling" value="bad">bad</label>
+            </div>
+          </li>
         </ul>
-        <div class="">
-          <a class=""><p class=""><span class="mo_crop__text__inner">確認</span></p>
-            <input type="submit" name="submitConfirm" value="" class="submit">
-          </a>
+        <div class="submit-wrap">
+          <input class="submit-btn" type="submit" name="submitConfirm" value="CONFIRM" class="submit">
         </div>
       </form>
     </div>
