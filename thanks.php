@@ -26,21 +26,19 @@
     </div>
   </header>
   <?php
-    if(isset($_POST['last_name'])){
-      //変数が定義されていればその値を変数に代入
-      $lastName = $_POST['last_name'];
-    } else {
-      //変数が定義されていなければ null（NULL）で初期化
-      $lastName = null;  //または $name = NULL;
-    }
+    //POST取得
+    $lastName = $_POST['last_name'];
+    $firstName = $_POST['first_name'];
+    $color = $_POST['color'];
+    $season = $_POST['season'];
+    $animal = $_POST['animal'];
+    $feeling = $_POST['feeling'];
 
-    if(isset($_POST['first_name'])){
-      //変数が定義されていればその値を変数に代入
-      $firstName = $_POST['first_name'];
-    } else {
-      //変数が定義されていなければ null（NULL）で初期化
-      $firstName = null;  //または $name = NULL;
-    }
+    //データを正解する
+    $data = $lastName . $firstName . $color . $season . $animal . $feeling . "\n";
+
+    //データを保存する
+    file_put_contents('survey.txt', $data, FILE_APPEND);
 
   ?>
   <div class="column-wrap">
