@@ -1,34 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Google Font START -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <!-- Google Font END -->
-  <!-- Chrome / Firefox / Edge -->
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text x=%2250%%22 y=%2250%%22 style=%22dominant-baseline:central;text-anchor:middle;font-size:90px;%22>🌞</text></svg>">
-  <link rel="stylesheet" href="/assets/css/reset.css">
-  <link rel="stylesheet" href="/assets/css/style.css">
+  <?php include "_head.php" ?>
   <script src="/assets/js/index.js" type="module"></script>
-  <title>アンケート課題</title>
+  <title>Fly recipe - ブックマーク課題 -</title>
 </head>
 <body>
   <div class="mountain-bg"></div>
-  <header class="gl-header">
-    <div class="logo">HEADER</div>
-    <div class="list">
-      <a class="item" href="">menu1</a>
-      <a class="item" href="">menu2</a>
-      <a class="item" href="">menu3</a>
-    </div>
-  </header>
+  <?php include "_header.php" ?>
   <div class="column-wrap">
     <div class="side-container">
       <div class="side-bar">
-        <div class="title">SURVEY</div>
+        <div class="title">FLYMARK</div>
         <ul class="list">
           <li class="item now">
             <figure class="circle"></figure>
@@ -49,43 +32,51 @@
       <form class="form" method="post" action="confirm.php">
         <ul class="list">
           <li class="item">
-            <p class="question">Name</p>
+            <p class="question">Fly Recipe Name</p>
             <div class="input-wrap">
-              <input class="input" type="text" name="last_name" value="" placeholder="Yamada">
-              <input class="input" type="text" name="first_name" value="" placeholder="Taro">
+              <input class="input" type="text" name="recipeName" value="" placeholder="エルクヘア・カディス">
             </div>
           </li>
           <li class="item">
-            <p class="question">Color</p>
+            <p class="question">Fly Recipe URL</p>
             <div class="input-wrap">
-              <label class="label"><input type="radio" name="color" value="warm"><span class="text">warm color</span></label>
-              <label class="label"><input type="radio" name="color" value="cold"><span class="text">cold color</span></label>
+              <input class="input" type="text" name="recipeURL" value="" placeholder="https://...">
+            </div>
+          </li>
+          <li class="item">
+            <p class="question">Category</p>
+            <div class="input-wrap">
+              <label class="label"><input type="radio" name="category" value="dry"><span class="text">ドライフライ</span></label>
+              <label class="label"><input type="radio" name="category" value="wet"><span class="text">ウェットフライ</span></label>
+              <label class="label"><input type="radio" name="category" value="nymph"><span class="text">ニンフ</span></label>
+              <label class="label"><input type="radio" name="category" value="stream"><span class="text">ストリーマー</span></label>
+              <label class="label"><input type="radio" name="category" value="other"><span class="text">その他</span></label>
             </div>
           </li>
           <li class="item">
             <p class="question">Season</p>
             <div class="radio-wrap">
-              <label class="label"><input type="radio" name="season" value="spring">spring</label>
-              <label class="label"><input type="radio" name="season" value="summer">summer</label>
-              <label class="label"><input type="radio" name="season" value="autumn">autumn</label>
-              <label class="label"><input type="radio" name="season" value="winter">winter</label>
+              <label class="label"><input type="radio" name="season" value="spring">春</label>
+              <label class="label"><input type="radio" name="season" value="summer">夏</label>
+              <label class="label"><input type="radio" name="season" value="autumn">秋</label>
+              <label class="label"><input type="radio" name="season" value="winter">冬</label>
+              <label class="label"><input type="radio" name="season" value="all">All</label>
             </div>
           </li>
           <li class="item">
-            <p class="question">Dog or Cat</p>
+            <p class="question">Area</p>
             <div class="radio-wrap">
-              <label class="label"><input type="radio" name="animal" value="dog">dog</label>
-              <label class="label"><input type="radio" name="animal" value="cat">cat</label>
+              <label class="label"><input type="radio" name="area" value="mountain-stream">渓流</label>
+              <label class="label"><input type="radio" name="area" value="main-stream">本流</label>
+              <label class="label"><input type="radio" name="area" value="lake">湖</label>
+              <label class="label"><input type="radio" name="area" value="sea">海</label>
+              <label class="label"><input type="radio" name="area" value="area">管理釣り場</label>
             </div>
           </li>
           <li class="item">
-            <p class="question">Feeling now</p>
-            <div class="radio-wrap">
-              <label class="label"><input type="radio" name="feeling" value="happy">happy</label>
-              <label class="label"><input type="radio" name="feeling" value="fine">fine</label>
-              <label class="label"><input type="radio" name="feeling" value="sleepy">sleepy</label>
-              <label class="label"><input type="radio" name="feeling" value="hungry">hungry</label>
-              <label class="label"><input type="radio" name="feeling" value="bad">bad</label>
+            <p class="question">Comment</p>
+            <div class="input-wrap">
+              <textarea class="input textarea" type="textarea" name="comment" value="" placeholder="3月下旬〜5月上旬にかけて鮮やかなオレンジ色の婚姻色が出たマルタウグイが多摩川中流域に遡上する、その遡上したマルタウグイを狙って使いたいフライ。"></textarea>
             </div>
           </li>
         </ul>

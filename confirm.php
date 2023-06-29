@@ -1,45 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Google Font START -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <!-- Google Font END -->
-  <!-- Chrome / Firefox / Edge -->
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text x=%2250%%22 y=%2250%%22 style=%22dominant-baseline:central;text-anchor:middle;font-size:90px;%22>🌞</text></svg>">
-  <link rel="stylesheet" href="/assets/css/reset.css">
-  <link rel="stylesheet" href="/assets/css/style.css">
+  <?php include "_head.php" ?>
   <script src="/assets/js/index.js" type="module"></script>
-  <title>アンケート課題</title>
+  <title>Fly recipe - ブックマーク課題 -</title>
 </head>
 <body>
   <div class="mountain-bg"></div>
-  <header class="gl-header">
-    <div class="logo">HEADER</div>
-    <div class="list">
-      <a class="item" href="">menu1</a>
-      <a class="item" href="">menu2</a>
-      <a class="item" href="">menu3</a>
-    </div>
-  </header>
+  <?php include "_header.php" ?>
   <?php
-    if(isset($_POST['last_name'])){
+    if(isset($_POST['recipeName'])){
       //変数が定義されていればその値を変数に代入
-      $lastName = $_POST['last_name'];
+      $recipeName = $_POST['recipeName'];
     } else {
       //変数が定義されていなければ null（NULL）で初期化
-      $lastName = null;  //または $name = NULL;
+      $recipeName = null;  //または $name = NULL;
     }
 
-    if(isset($_POST['first_name'])){
+    if(isset($_POST['recipeURL'])){
       //変数が定義されていればその値を変数に代入
-      $firstName = $_POST['first_name'];
+      $recipeURL = $_POST['recipeURL'];
     } else {
       //変数が定義されていなければ null（NULL）で初期化
-      $firstName = null;  //または $name = NULL;
+      $recipeURL = null;  //または $name = NULL;
+    }
+
+    if(isset($_POST['comment'])){
+      //変数が定義されていればその値を変数に代入
+      $comment = $_POST['comment'];
+    } else {
+      //変数が定義されていなければ null（NULL）で初期化
+      $comment = null;  //または $name = NULL;
     }
 
   ?>
@@ -64,46 +55,54 @@
       </div>
     </div>
     <div class="form-container">
-      <form class="form" method="post" action="thanks.php">
+      <form class="form" method="post" action="confirm.php">
         <ul class="list">
           <li class="item">
-            <p class="question">name</p>
+            <p class="question">Fly Recipe Name</p>
             <div class="input-wrap">
-              <input class="input" type="text" name="last_name" placeholder="Yamada" value="<?= $lastName ?>">
-              <input class="input" type="text" name="first_name" placeholder="Taro" value="<?= $firstName ?>">
+              <input class="input" type="text" name="recipeName" value="<?= $recipeName ?>">
             </div>
           </li>
           <li class="item">
-            <p class="question">color</p>
-            <div class="radio-wrap">
-              <label class="label"><input type="radio" name="color" value="warm" <?php if (isset($_POST['color']) && $_POST['color'] == "warm") echo 'checked'; ?> >warm color</label>
-              <label class="label"><input type="radio" name="color" value="cold" <?php if (isset($_POST['color']) && $_POST['color'] == "cold") echo 'checked'; ?> >cold color</label>
+            <p class="question">Fly Recipe URL</p>
+            <div class="input-wrap">
+              <input class="input" type="text" name="recipeURL" value="<?= $recipeURL ?>">
             </div>
           </li>
           <li class="item">
-            <p class="question">season</p>
-            <div class="radio-wrap">
-              <label class="label"><input type="radio" name="season" value="spring" <?php if (isset($_POST['season']) && $_POST['season'] == "spring") echo 'checked'; ?> >spring</label>
-              <label class="label"><input type="radio" name="season" value="summer" <?php if (isset($_POST['season']) && $_POST['season'] == "summer") echo 'checked'; ?> >summer</label>
-              <label class="label"><input type="radio" name="season" value="autumn" <?php if (isset($_POST['season']) && $_POST['season'] == "autumn") echo 'checked'; ?> >autumn</label>
-              <label class="label"><input type="radio" name="season" value="winter" <?php if (isset($_POST['season']) && $_POST['season'] == "winter") echo 'checked'; ?> >winter</label>
+            <p class="question">Category</p>
+            <div class="input-wrap">
+              <label class="label"><input type="radio" name="category" value="dry" <?php if (isset($_POST['category']) && $_POST['category'] == "dry") echo 'checked'; ?>><span class="text">ドライフライ</span></label>
+              <label class="label"><input type="radio" name="category" value="wet" <?php if (isset($_POST['category']) && $_POST['category'] == "wet") echo 'checked'; ?>><span class="text">ウェットフライ</span></label>
+              <label class="label"><input type="radio" name="category" value="nymph" <?php if (isset($_POST['category']) && $_POST['category'] == "nymph") echo 'checked'; ?>><span class="text">ニンフ</span></label>
+              <label class="label"><input type="radio" name="category" value="stream" <?php if (isset($_POST['category']) && $_POST['category'] == "stream") echo 'checked'; ?>><span class="text">ストリーマー</span></label>
+              <label class="label"><input type="radio" name="category" value="other" <?php if (isset($_POST['category']) && $_POST['category'] == "other") echo 'checked'; ?>><span class="text">その他</span></label>
             </div>
           </li>
           <li class="item">
-            <p class="question">dog or cat</p>
+            <p class="question">Season</p>
             <div class="radio-wrap">
-              <label class="label"><input type="radio" name="animal" value="dog" <?php if (isset($_POST['animal']) && $_POST['animal'] == "dog") echo 'checked'; ?> >dog</label>
-              <label class="label"><input type="radio" name="animal" value="cat" <?php if (isset($_POST['animal']) && $_POST['animal'] == "cat") echo 'checked'; ?> >cat</label>
+              <label class="label"><input type="radio" name="season" value="spring">春</label>
+              <label class="label"><input type="radio" name="season" value="summer">夏</label>
+              <label class="label"><input type="radio" name="season" value="autumn">秋</label>
+              <label class="label"><input type="radio" name="season" value="winter">冬</label>
+              <label class="label"><input type="radio" name="season" value="all">All</label>
             </div>
           </li>
           <li class="item">
-            <p class="question">feeling now</p>
+            <p class="question">Area</p>
             <div class="radio-wrap">
-              <label class="label"><input type="radio" name="feeling" value="happy" <?php if (isset($_POST['feeling']) && $_POST['feeling'] == "happy") echo 'checked'; ?> >happy</label>
-              <label class="label"><input type="radio" name="feeling" value="fine" <?php if (isset($_POST['feeling']) && $_POST['feeling'] == "fine") echo 'checked'; ?> >fine</label>
-              <label class="label"><input type="radio" name="feeling" value="sleepy" <?php if (isset($_POST['feeling']) && $_POST['feeling'] == "sleepy") echo 'checked'; ?> >sleepy</label>
-              <label class="label"><input type="radio" name="feeling" value="hungry" <?php if (isset($_POST['feeling']) && $_POST['feeling'] == "hungry") echo 'checked'; ?> >hungry</label>
-              <label class="label"><input type="radio" name="feeling" value="bad" <?php if (isset($_POST['feeling']) && $_POST['feeling'] == "bad") echo 'checked'; ?> >bad</label>
+              <label class="label"><input type="radio" name="area" value="mountain-stream">渓流</label>
+              <label class="label"><input type="radio" name="area" value="main-stream">本流</label>
+              <label class="label"><input type="radio" name="area" value="lake">湖</label>
+              <label class="label"><input type="radio" name="area" value="sea">海</label>
+              <label class="label"><input type="radio" name="area" value="area">管理釣り場</label>
+            </div>
+          </li>
+          <li class="item">
+            <p class="question">Comment</p>
+            <div class="input-wrap">
+              <textarea class="input textarea" type="textarea" name="comment"><?= $comment ?></textarea>
             </div>
           </li>
         </ul>
