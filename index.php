@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
   <?php include "_head.php" ?>
-  <script src="/assets/js/index.js" type="module"></script>
   <title>Fly recipe - ブックマーク課題 -</title>
 </head>
 <body>
@@ -66,8 +65,8 @@
           <li class="item">
             <p class="question">Area</p>
             <div class="radio-wrap">
-              <label class="label"><input type="radio" name="area" value="mountain-stream">渓流</label>
-              <label class="label"><input type="radio" name="area" value="main-stream">本流</label>
+              <label class="label"><input type="radio" name="area" value="mountainStream">渓流</label>
+              <label class="label"><input type="radio" name="area" value="mainStream">本流</label>
               <label class="label"><input type="radio" name="area" value="lake">湖</label>
               <label class="label"><input type="radio" name="area" value="sea">海</label>
               <label class="label"><input type="radio" name="area" value="area">管理釣り場</label>

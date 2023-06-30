@@ -55,54 +55,54 @@
       </div>
     </div>
     <div class="form-container">
-      <form class="form" method="post" action="confirm.php">
+      <form class="form" method="post" action="thanks.php">
         <ul class="list">
           <li class="item">
             <p class="question">Fly Recipe Name</p>
             <div class="input-wrap">
-              <input class="input" type="text" name="recipeName" value="<?= $recipeName ?>">
+              <input class="input" type="text" name="recipeName" readonly value="<?= $recipeName ?>">
             </div>
           </li>
           <li class="item">
             <p class="question">Fly Recipe URL</p>
             <div class="input-wrap">
-              <input class="input" type="text" name="recipeURL" value="<?= $recipeURL ?>">
+              <input class="input" type="text" name="recipeURL" readonly value="<?= $recipeURL ?>">
             </div>
           </li>
           <li class="item">
             <p class="question">Category</p>
             <div class="input-wrap">
-              <label class="label"><input type="radio" name="category" value="dry" <?php if (isset($_POST['category']) && $_POST['category'] == "dry") echo 'checked'; ?>><span class="text">ドライフライ</span></label>
-              <label class="label"><input type="radio" name="category" value="wet" <?php if (isset($_POST['category']) && $_POST['category'] == "wet") echo 'checked'; ?>><span class="text">ウェットフライ</span></label>
-              <label class="label"><input type="radio" name="category" value="nymph" <?php if (isset($_POST['category']) && $_POST['category'] == "nymph") echo 'checked'; ?>><span class="text">ニンフ</span></label>
-              <label class="label"><input type="radio" name="category" value="stream" <?php if (isset($_POST['category']) && $_POST['category'] == "stream") echo 'checked'; ?>><span class="text">ストリーマー</span></label>
-              <label class="label"><input type="radio" name="category" value="other" <?php if (isset($_POST['category']) && $_POST['category'] == "other") echo 'checked'; ?>><span class="text">その他</span></label>
+              <label class="label"><input type="radio" name="category" value="dry" readonly <?php if (isset($_POST['category']) && $_POST['category'] == "dry") echo 'checked'; ?>><span class="text">ドライフライ</span></label>
+              <label class="label"><input type="radio" name="category" value="wet" readonly <?php if (isset($_POST['category']) && $_POST['category'] == "wet") echo 'checked'; ?>><span class="text">ウェットフライ</span></label>
+              <label class="label"><input type="radio" name="category" value="nymph" readonly <?php if (isset($_POST['category']) && $_POST['category'] == "nymph") echo 'checked'; ?>><span class="text">ニンフ</span></label>
+              <label class="label"><input type="radio" name="category" value="stream" readonly <?php if (isset($_POST['category']) && $_POST['category'] == "stream") echo 'checked'; ?>><span class="text">ストリーマー</span></label>
+              <label class="label"><input type="radio" name="category" value="other" readonly <?php if (isset($_POST['category']) && $_POST['category'] == "other") echo 'checked'; ?>><span class="text">その他</span></label>
             </div>
           </li>
           <li class="item">
             <p class="question">Season</p>
             <div class="radio-wrap">
-              <label class="label"><input type="radio" name="season" value="spring" <?php if (isset($_POST['season']) && $_POST['season'] == "spring") echo 'checked'; ?>>春</label>
-              <label class="label"><input type="radio" name="season" value="summer" <?php if (isset($_POST['season']) && $_POST['season'] == "summer") echo 'checked'; ?>>夏</label>
-              <label class="label"><input type="radio" name="season" value="autumn" <?php if (isset($_POST['season']) && $_POST['season'] == "autumn") echo 'checked'; ?>>秋</label>
-              <label class="label"><input type="radio" name="season" value="winter" <?php if (isset($_POST['season']) && $_POST['season'] == "winter") echo 'checked'; ?>>冬</label>
-              <label class="label"><input type="radio" name="season" value="all" <?php if (isset($_POST['season']) && $_POST['season'] == "all") echo 'checked'; ?>>All</label>
+              <label class="label"><input type="radio" name="season" value="spring" readonly <?php if (isset($_POST['season']) && $_POST['season'] == "spring") echo 'checked'; ?>>春</label>
+              <label class="label"><input type="radio" name="season" value="summer" readonly <?php if (isset($_POST['season']) && $_POST['season'] == "summer") echo 'checked'; ?>>夏</label>
+              <label class="label"><input type="radio" name="season" value="autumn" readonly <?php if (isset($_POST['season']) && $_POST['season'] == "autumn") echo 'checked'; ?>>秋</label>
+              <label class="label"><input type="radio" name="season" value="winter" readonly <?php if (isset($_POST['season']) && $_POST['season'] == "winter") echo 'checked'; ?>>冬</label>
+              <label class="label"><input type="radio" name="season" value="all" readonly <?php if (isset($_POST['season']) && $_POST['season'] == "all") echo 'checked'; ?>>All</label>
             </div>
           </li>
           <li class="item">
             <p class="question">Area</p>
             <div class="radio-wrap">
-              <label class="label"><input type="radio" name="area" value="mountainStream" <?php if (isset($_POST['area']) && $_POST['area'] == "mountainStream") echo 'checked'; ?>>渓流</label>
-              <label class="label"><input type="radio" name="area" value="mainStream" <?php if (isset($_POST['area']) && $_POST['area'] == "mainStream") echo 'checked'; ?>>本流</label>
-              <label class="label"><input type="radio" name="area" value="lake" <?php if (isset($_POST['area']) && $_POST['area'] == "lake") echo 'checked'; ?>>湖</label>
-              <label class="label"><input type="radio" name="area" value="sea" <?php if (isset($_POST['area']) && $_POST['area'] == "sea") echo 'checked'; ?>>海</label>
-              <label class="label"><input type="radio" name="area" value="area" <?php if (isset($_POST['area']) && $_POST['area'] == "area") echo 'checked'; ?>>管理釣り場</label>
+              <label class="label"><input type="radio" name="area" value="mountainStream" readonly <?php if (isset($_POST['area']) && $_POST['area'] == "mountainStream") echo 'checked'; ?>>渓流</label>
+              <label class="label"><input type="radio" name="area" value="mainStream" readonly <?php if (isset($_POST['area']) && $_POST['area'] == "mainStream") echo 'checked'; ?>>本流</label>
+              <label class="label"><input type="radio" name="area" value="lake" readonly <?php if (isset($_POST['area']) && $_POST['area'] == "lake") echo 'checked'; ?>>湖</label>
+              <label class="label"><input type="radio" name="area" value="sea" readonly <?php if (isset($_POST['area']) && $_POST['area'] == "sea") echo 'checked'; ?>>海</label>
+              <label class="label"><input type="radio" name="area" value="area" readonly <?php if (isset($_POST['area']) && $_POST['area'] == "area") echo 'checked'; ?>>管理釣り場</label>
             </div>
           </li>
           <li class="item">
             <p class="question">Comment</p>
             <div class="input-wrap">
-              <textarea class="input textarea" type="textarea" name="comment"><?= $comment ?></textarea>
+              <textarea class="input textarea" type="textarea" name="comment" readonly><?= $comment ?></textarea>
             </div>
           </li>
         </ul>
