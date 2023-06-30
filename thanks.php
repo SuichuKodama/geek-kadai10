@@ -10,15 +10,15 @@
   <?php include "_header.php" ?>
   <?php
     //POST取得
-    $lastName = $_POST['last_name'];
-    $firstName = $_POST['first_name'];
-    $color = $_POST['color'];
+    $recipeName = $_POST['recipeName'];
+    $recipeURL = $_POST['recipeURL'];
+    $category = $_POST['category'];
     $season = $_POST['season'];
-    $animal = $_POST['animal'];
-    $feeling = $_POST['feeling'];
+    $area = $_POST['area'];
+    $comment = $_POST['comment'];
 
     //データを正解する
-    $data = $lastName . $firstName . $color . $season . $animal . $feeling . "\n";
+    $data = $recipeName . $recipeURL . $category . $season . $area . $comment . "\n";
 
     //データを保存する
     file_put_contents('survey.txt', $data, FILE_APPEND);
