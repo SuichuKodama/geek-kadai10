@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <?php include "_head.php" ?>
-  <script src="/assets/js/index.js" type="module"></script>
+  <script src="./assets/js/index.js" type="module"></script>
   <title>Fly recipe - ブックマーク課題 -</title>
 </head>
 <body>
