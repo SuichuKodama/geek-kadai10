@@ -8,6 +8,8 @@
   <div class="mountain-bg"></div>
   <?php include "_header.php" ?>
   <?php
+require_once('funcs.php');
+  
 //1. POSTデータ取得
 $recipeName = $_POST['recipeName'];
 $recipeURL = $_POST['recipeURL'];
@@ -17,12 +19,7 @@ $area = $_POST['area'];
 $comment = $_POST['comment'];
 
 //2. DB接続します
-try {
-  //ID:'root', Password: xamppは 空白 ''
-  $pdo = new PDO('mysql:dbname=fly_mark;charset=utf8;host=localhost','root','');
-} catch (PDOException $e) {
-  exit('DBConnectError:'.$e->getMessage());
-}
+$pdo = db_conn();
 
 //３．データ登録SQL作成
 
@@ -89,7 +86,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       <div class="title">Completed</div>
       <div class="text">Thank you for your cooperation!</div>
       <div class="submit-wrap">
-        <a class="top-btn" href="/gs_code/geek-kadai09">TOP</a>
+        <a class="top-btn" href="/gs_code/geek-kadai10">TOP</a>
       </div>
     </div>
   </div>

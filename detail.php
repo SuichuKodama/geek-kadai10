@@ -1,39 +1,23 @@
 
 <?php
+session_start();
+require_once('funcs.php');
+loginCheck();
 
-/**
- * [ここでやりたいこと]
- * 1. クエリパラメータの確認 = GETで取得している内容を確認する
- * 2. select.phpのPHP<?php ?>の中身をコピー、貼り付け
- * 3. SQL部分にwhereを追加
- * 4. データ取得の箇所を修正。
- */
- $id = $_GET['id'];
+$id = $_GET['id']; //?id~**を受け取る
+$pdo = db_conn();
 
- try {
-  //Password:MAMP='root',XAMPP=''
-  $pdo = new PDO('mysql:dbname=fly_mark;charset=utf8;host=localhost','root','');
-} catch (PDOException $e) {
-  exit('DBConnectError'.$e->getMessage());
-}
-
-//データ登録SQL作成
-$stmt = $pdo->prepare('SELECT * FROM gs_bm_table WHERE id = :id');
+//２．データ登録SQL作成
+$stmt = $pdo->prepare('SELECT * FROM gs_bm_table WHERE id=:id;');
 $stmt->bindValue(':id', $id, PDO::PARAM_INT);
-$status = $stmt->execute(); //実行
+$status = $stmt->execute();
 
 //データ表示
-$result = '';
-if ($status === false) {
-    $error = $stmt->errorInfo();
-    exit('SQLError:' . print_r($error, true));
+if ($status == false) {
+  sql_error($stmt);
 } else {
-    $result = $stmt->fetch();
+  $row = $stmt->fetch();
 }
-
-// エラーが起きたときは↓使って各ブロックずつデバックすると良い
-// var_dump ($result);
-// exit();
 
 
 ?>
@@ -76,7 +60,7 @@ if ($status === false) {
   <div class="column-wrap">
     <div class="side-container">
       <div class="side-bar">
-        <div class="title">SURVEY</div>
+        <div class="title">UPDATE</div>
         <ul class="list">
           <li class="item">
             <figure class="circle"></figure>
@@ -99,33 +83,33 @@ if ($status === false) {
           <li class="item">
             <p class="question">Fly Recipe Name</p>
             <div class="input-wrap">
-              <input class="input" type="text" name="recipeName" value="<?= $result['recipeName'] ?>">
+              <input class="input" type="text" name="recipeName" value="<?= $row['recipeName'] ?>">
             </div>
           </li>
           <li class="item">
             <p class="question">Fly Recipe URL</p>
             <div class="input-wrap">
-              <input class="input" type="text" name="recipeURL" value="<?= $result['recipeURL'] ?>">
+              <input class="input" type="text" name="recipeURL" value="<?= $row['recipeURL'] ?>">
             </div>
           </li>
           <li class="item">
             <p class="question">Category</p>
             <div class="input-wrap">
-              <label class="label"><input type="radio" name="category" value="dry" <?php if (isset($result['category']) && $result['category'] == "dry") echo 'checked'; ?>><span class="text">ドライフライ</span></label>
-              <label class="label"><input type="radio" name="category" value="wet" <?php if (isset($result['category']) && $result['category'] == "wet") echo 'checked'; ?>><span class="text">ウェットフライ</span></label>
-              <label class="label"><input type="radio" name="category" value="nymph" <?php if (isset($result['category']) && $result['category'] == "nymph") echo 'checked'; ?>><span class="text">ニンフ</span></label>
-              <label class="label"><input type="radio" name="category" value="stream" <?php if (isset($result['category']) && $result['category'] == "stream") echo 'checked'; ?>><span class="text">ストリーマー</span></label>
-              <label class="label"><input type="radio" name="category" value="other" <?php if (isset($result['category']) && $result['category'] == "other") echo 'checked'; ?>><span class="text">その他</span></label>
+              <label class="label"><input type="radio" name="category" value="dry" <?php if (isset($row['category']) && $row['category'] == "dry") echo 'checked'; ?>><span class="text">ドライフライ</span></label>
+              <label class="label"><input type="radio" name="category" value="wet" <?php if (isset($row['category']) && $row['category'] == "wet") echo 'checked'; ?>><span class="text">ウェットフライ</span></label>
+              <label class="label"><input type="radio" name="category" value="nymph" <?php if (isset($row['category']) && $row['category'] == "nymph") echo 'checked'; ?>><span class="text">ニンフ</span></label>
+              <label class="label"><input type="radio" name="category" value="stream" <?php if (isset($row['category']) && $row['category'] == "stream") echo 'checked'; ?>><span class="text">ストリーマー</span></label>
+              <label class="label"><input type="radio" name="category" value="other" <?php if (isset($row['category']) && $row['category'] == "other") echo 'checked'; ?>><span class="text">その他</span></label>
             </div>
           </li>
           <li class="item">
             <p class="question">Season</p>
             <div class="radio-wrap">
-              <label class="label"><input type="radio" name="season" value="spring" <?php if (isset($result['season']) && $result['season'] == "spring") echo 'checked'; ?>>春</label>
-              <label class="label"><input type="radio" name="season" value="summer" <?php if (isset($result['season']) && $result['season'] == "summer") echo 'checked'; ?>>夏</label>
-              <label class="label"><input type="radio" name="season" value="autumn" <?php if (isset($result['season']) && $result['season'] == "autumn") echo 'checked'; ?>>秋</label>
-              <label class="label"><input type="radio" name="season" value="winter" <?php if (isset($result['season']) && $result['season'] == "winter") echo 'checked'; ?>>冬</label>
-              <label class="label"><input type="radio" name="season" value="all" <?php if (isset($result['season']) && $result['season'] == "all") echo 'checked'; ?>>All</label>
+              <label class="label"><input type="radio" name="season" value="spring" <?php if (isset($row['season']) && $row['season'] == "spring") echo 'checked'; ?>>春</label>
+              <label class="label"><input type="radio" name="season" value="summer" <?php if (isset($row['season']) && $row['season'] == "summer") echo 'checked'; ?>>夏</label>
+              <label class="label"><input type="radio" name="season" value="autumn" <?php if (isset($row['season']) && $row['season'] == "autumn") echo 'checked'; ?>>秋</label>
+              <label class="label"><input type="radio" name="season" value="winter" <?php if (isset($row['season']) && $row['season'] == "winter") echo 'checked'; ?>>冬</label>
+              <label class="label"><input type="radio" name="season" value="all" <?php if (isset($row['season']) && $row['season'] == "all") echo 'checked'; ?>>All</label>
             </div>
           </li>
           <li class="item">
@@ -141,7 +125,7 @@ if ($status === false) {
           <li class="item">
             <p class="question">Comment</p>
             <div class="input-wrap">
-              <textarea class="input textarea" type="textarea" name="comment"><?= $result['comment'] ?></textarea>
+              <textarea class="input textarea" type="textarea" name="comment"><?= $row['comment'] ?></textarea>
             </div>
           </li>
         </ul>

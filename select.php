@@ -1,36 +1,31 @@
 <?php
 //funcs.phpを読込む(使える関数を一つのファイルにまとめておくと便利)
+session_start();
 require_once('funcs.php');
+loginCheck();
 
-//1.  DB接続します
-try {
-  //Password:MAMP='root',XAMPP=''
-  $pdo = new PDO('mysql:dbname=fly_mark;charset=utf8;host=localhost','root','');
-} catch (PDOException $e) {
-  exit('DBConnectError'.$e->getMessage());
-}
 
-//２．データ取得SQL作成
-$stmt = $pdo->prepare("SELECT * FROM gs_bm_table");
+//２．データ登録SQL作成
+$pdo = db_conn();
+$stmt = $pdo->prepare('SELECT * FROM gs_bm_table');
 $status = $stmt->execute();
 
 //３．データ表示
-$view="";
-if ($status==false) {
-    //execute（SQL実行時にエラーがある場合）
-  $error = $stmt->errorInfo();
-  exit("ErrorQuery:".$error[2]);
-
+$view = '';
+if ($status == false) {
+    sql_error($stmt);
 }else{
   //Selectデータの数だけ自動でループしてくれる
-  //FETCH_ASSOC=http://php.net/manual/ja/pdostatement.fetch.php
   //fetchで中身とってきたら$resultに入れる処理（while文で処理を回す）
   while( $result = $stmt->fetch(PDO::FETCH_ASSOC)){
     //'='だと上書きされるが'.='だと追加されていく
     $view .= "<li class='item'>".
-    "<div class='btn-list'>".
-    "<a class='delete-btn' href='delete.php?id=". $result['id'] ."'>削除</a>".
-    "<a class='detail-btn' href='detail.php?id=". $result['id'] ."'>更新</a>".
+    "<div class='btn-list'>";
+    //管理者なら表示する
+    if ($_SESSION['kanri_flg'] === 1){
+      $view .= "<a class='delete-btn' href='delete.php?id=". $result['id'] ."'>削除</a>";
+    }
+    $view .= "<a class='detail-btn' href='detail.php?id=". $result['id'] ."'>更新</a>".
     "</div>".
     "<span class='value date'>". h(date('Y.m.d' ,strtotime($result['date']))) ."</span>".
     "<span class='value recipeName'>". h($result['recipeName']) ."</span>".
